@@ -1,34 +1,56 @@
-// console.log(document);
-// console.dir(document);
-// console.dir(document.body);
-// console.dir(document.body.children);
+'use strict';
 
-const [h1] = document.body.children;
-console.log(h1);
+console.dir(document);
+//найоптимальніший спосіб дістати body!!!
+const body = document.body;
+console.log(body);
 
-function handlerClickH1(){
-  console.log('click on h1')
+// id
+// найоптимальніший спосіб!!
+const unique = document.getElementById('unique');
+console.log(unique);
+
+// class name -> HTMLCollection
+const items = document.getElementsByClassName('item');
+console.log(items);
+
+// tag name  -> HTMLCollection
+const btns = document.getElementsByTagName('button');
+console.log(btns);
+
+for (const btn of btns) {
+  btn.addEventListener('click', () => {
+    console.log(btn);
+  });
 }
 
-h1.addEventListener('click', handlerClickH1);
-h1.addEventListener('click', ()=>{console.log(1)});
-h1.addEventListener('click', ()=>{console.log('word!')});
-if(Math.random()>0.8){
-  h1.removeEventListener('click', handlerClickH1);
-}
-
-h1.onclick = function(){
-  console.log('onclick 1')
-}
-h1.onclick = function(){
-  console.log('onclick 2')
-}
-h1.onclick = function(){
-  console.log('onclick 3')
-}
-h1.onclick = null;
+const [btn1, , btn3] = document.getElementsByTagName('button');
+console.log(btn1);
+//console.log(btn3);
+// властивість дає змогу додати лише один обробник на подію!!!
+// спрацює тільки останній
+btn1.onclick = () => {
+  console.log('onclick 1');
+};
+btn1.onclick = () => {
+  console.log('onclick 2');
+};
+btn1.onclick = () => {
+  console.log('onclick 3');
+};
 
 
-document.addEventListener('dblclick', ()=>{
-  console.log('dblclick');
-})
+// querySelector  
+const btn2 = document.querySelector('button+button');
+console.log(btn2);
+
+// querySelectorAll  -> NodeList
+const btnsSosed = document.querySelectorAll('button+button');
+console.log(btnsSosed);
+
+
+
+// 
+document.links
+document.images
+document.forms
