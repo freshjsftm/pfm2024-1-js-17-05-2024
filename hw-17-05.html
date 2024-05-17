@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Приклад сторінки</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #main-header {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+      }
+      .menu ul {
+        list-style: none;
+        padding: 0;
+      }
+      .menu ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+      .menu ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      .content-section {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+      }
+      .content-section article {
+        width: 45%;
+      }
+      .content-section article img {
+        width: 100%;
+        height: auto;
+      }
+      .content-section article p:first-of-type {
+        font-weight: bold;
+      }
+      .content-section article p:last-of-type {
+        font-style: italic;
+      }
+      .main-footer {
+        background-color: #f1f1f1;
+        color: #333;
+        text-align: center;
+        padding: 10px 0;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="main-header">
+      <h1>Моя веб-сторінка</h1>
+      <nav class="menu">
+        <ul>
+          <li><a href="#">Головна</a></li>
+          <li><a href="#">Про нас</a></li>
+          <li><a href="#">Послуги</a></li>
+          <li><a href="#">Контакти</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="content-section">
+      <article>
+        <h2>Стаття 1</h2>
+        <img src="https://via.placeholder.com/200" alt="Картинка до статті 1" />
+        <p>
+          Це перший абзац тексту для першої статті. Тут можна розмістити
+          будь-яку інформацію, яка вас цікавить.
+        </p>
+        <p>
+          Це другий абзац тексту для першої статті. Тут можна розмістити
+          додаткову інформацію.
+        </p>
+      </article>
+      <article>
+        <h2>Стаття 2</h2>
+        <img src="https://via.placeholder.com/200" alt="Картинка до статті 2" />
+        <p>
+          Це перший абзац тексту для другої статті. Тут можна розмістити
+          будь-яку інформацію, яка вас цікавить.
+        </p>
+        <p>
+          Це другий абзац тексту для другої статті. Тут можна розмістити
+          додаткову інформацію.
+        </p>
+      </article>
+    </section>
+    <footer class="main-footer">
+      <p>&copy; 2024 Моя веб-сторінка. Всі права захищені.</p>
+    </footer>
+  </body>
+</html>
