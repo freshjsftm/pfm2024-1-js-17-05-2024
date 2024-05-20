@@ -21,25 +21,12 @@ class Slider {
     return this._slides[this._currentIndex];
   }
 
-  prev(){
+  get prev(){
     return (this._currentIndex - 1 + this._slides.length) % this._slides.length;
   }
-  next() {
+  get next() {
     return (this._currentIndex + 1) % this._slides.length;
   }
-  // prev() {
-  //   if (this.currentIndex <= 0) {
-  //     return (this.currentIndex = this._slides.length - 1);
-  //   }
-  //   return this._currentIndex - 1;
-  // }
-  // next() {
-  //   if (this.currentIndex >= this._slides.length-1) {
-  //     return (this.currentIndex = 0);
-  //   }
-  //   return this._currentIndex + 1;
-  // }
 }
 
-// 0 1 2
-// 22%3 = 0 1 2
+

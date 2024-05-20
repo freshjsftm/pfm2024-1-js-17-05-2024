@@ -23,20 +23,28 @@ const [prevBtn, nextBtn] = document.querySelectorAll(
   '.slider-container>button'
 );
 
-function updateSlide(){
+function updateSlide() {
   image.src = slider.currentSlide.src;
   image.alt = slider.currentSlide.alt;
 }
 updateSlide();
 
-prevBtn.addEventListener('click', ()=>{
-  console.log(slider.currentIndex);
-  slider.currentIndex = slider.prev();
-  updateSlide();
-})
+const handlerSlide =
+  (direction = 'next') =>
+  () => {
+    slider.currentIndex = slider[direction];
+    updateSlide();
+  };
 
-nextBtn.addEventListener('click', ()=>{
-  console.log(slider.currentIndex);
-  slider.currentIndex = slider.next();
-  updateSlide();
-})
+prevBtn.addEventListener('click', handlerSlide('prev'));
+nextBtn.addEventListener('click', handlerSlide('next'));
+
+// prevBtn.addEventListener('click', ()=>{
+//   slider.currentIndex = slider.prev;
+//   updateSlide();
+// })
+
+// nextBtn.addEventListener('click', ()=>{
+//   slider.currentIndex = slider.next;
+//   updateSlide();
+// })
