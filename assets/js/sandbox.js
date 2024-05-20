@@ -3,22 +3,32 @@
 // closure  замикання
 // комбінація функції і її лексичного оточення, в якому вона була створена(визначена)
 
-let value = 17;
-function logWithoutParametr() {
-  console.log('log in function logWithoutParametr ', value);
-}
-logWithoutParametr();
+// bad practice!!!!
+// засмічюємо глобальну область!
+// let count = 0;
+// function counter() {
+//   count++;
+//   return count;
+// }
 
-function logWithParametr(value = 47) {
-  //let value = 47;
-  console.log('log in function logWithParametr ', value);
+// HOF - hight order function
+// function counter(count = 0){
+//  // let count = 0; //closure
+//   function insideCounter(){
+//     count++;
+//     return count;
+//   }
+//   return insideCounter;
+// }
 
-  logWithoutParametr(); // 17 !!!!
+// function counter(count = 0) {
+//   return function () {
+//     count++;
+//     return count;
+//   };
+// }
 
-  function logWithoutParametrInsideFunc() {
-    console.log('logWithoutParametrInsideFunc = ', value);
-  }
-  logWithoutParametrInsideFunc();
-}
+const counter = (count = 0) => () => ++count;
 
-logWithParametr();
+const counter1 = counter();
+const counter2 = counter(100);
