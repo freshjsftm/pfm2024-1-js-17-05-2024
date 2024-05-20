@@ -1,56 +1,42 @@
 'use strict';
 
-console.dir(document);
-//найоптимальніший спосіб дістати body!!!
-const body = document.body;
-console.log(body);
+const imageDB = [
+  {
+    src: 'https://t3.ftcdn.net/jpg/05/63/76/92/360_F_563769202_XvjMvyMO593Wt70Um2OQPJ5CZrTXbT4t.jpg',
+    alt: 'sea 1',
+  },
+  {
+    src: 'https://galwaycitymuseum.ie/wp-content/uploads/2022/08/sea-science.jpg',
+    alt: 'sea 2',
+  },
+  {
+    src: 'https://images.nationalgeographic.org/image/upload/t_RL2_search_thumb/v1652341068/EducationHub/photos/ocean-waves.jpg',
+    alt: 'sea 3',
+  },
+];
 
-// id
-// найоптимальніший спосіб!!
-const unique = document.getElementById('unique');
-console.log(unique);
+const slider = new Slider(imageDB);
 
-// class name -> HTMLCollection
-const items = document.getElementsByClassName('item');
-console.log(items);
+const image = document.querySelector('.slider-container>.slide>img');
 
-// tag name  -> HTMLCollection
-const btns = document.getElementsByTagName('button');
-console.log(btns);
+const [prevBtn, nextBtn] = document.querySelectorAll(
+  '.slider-container>button'
+);
 
-for (const btn of btns) {
-  btn.addEventListener('click', () => {
-    console.log(btn);
-  });
+function updateSlide(){
+  image.src = slider.currentSlide.src;
+  image.alt = slider.currentSlide.alt;
 }
+updateSlide();
 
-const [btn1, , btn3] = document.getElementsByTagName('button');
-console.log(btn1);
-//console.log(btn3);
-// властивість дає змогу додати лише один обробник на подію!!!
-// спрацює тільки останній
-btn1.onclick = () => {
-  console.log('onclick 1');
-};
-btn1.onclick = () => {
-  console.log('onclick 2');
-};
-btn1.onclick = () => {
-  console.log('onclick 3');
-};
+prevBtn.addEventListener('click', ()=>{
+  console.log(slider.currentIndex);
+  slider.currentIndex = slider.prev();
+  updateSlide();
+})
 
-
-// querySelector  
-const btn2 = document.querySelector('button+button');
-console.log(btn2);
-
-// querySelectorAll  -> NodeList
-const btnsSosed = document.querySelectorAll('button+button');
-console.log(btnsSosed);
-
-
-
-// 
-document.links
-document.images
-document.forms
+nextBtn.addEventListener('click', ()=>{
+  console.log(slider.currentIndex);
+  slider.currentIndex = slider.next();
+  updateSlide();
+})
