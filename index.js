@@ -1,7 +1,11 @@
 'use strict';
 
 const unique = document.getElementById('unique');
-unique.addEventListener('click', handlerClick);
+
+//генеруємо об'єкт власної події
+const objMyEvent = new Event('myEvent');
+
+unique.addEventListener('myEvent', handlerClick);
 
 function handlerClick() {
   //alert(1)
@@ -10,8 +14,7 @@ function handlerClick() {
   unique.disabled = true;
 }
 
-//генеруємо об'єкт подіїї objMouseClickEvent
-const objMouseClickEvent = new MouseEvent('click');
-//викликаємо згенерований об'єкт події на елементі
-unique.dispatchEvent(objMouseClickEvent);
-
+if (Math.random() > 0.5) {
+  //викликаємо згенерований об'єкт події на елементі
+  unique.dispatchEvent(objMyEvent);
+}
