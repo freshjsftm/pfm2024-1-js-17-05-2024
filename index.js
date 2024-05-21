@@ -1,50 +1,17 @@
 'use strict';
 
-const imageDB = [
-  {
-    src: 'https://t3.ftcdn.net/jpg/05/63/76/92/360_F_563769202_XvjMvyMO593Wt70Um2OQPJ5CZrTXbT4t.jpg',
-    alt: 'sea 1',
-  },
-  {
-    src: 'https://galwaycitymuseum.ie/wp-content/uploads/2022/08/sea-science.jpg',
-    alt: 'sea 2',
-  },
-  {
-    src: 'https://images.nationalgeographic.org/image/upload/t_RL2_search_thumb/v1652341068/EducationHub/photos/ocean-waves.jpg',
-    alt: 'sea 3',
-  },
-];
+const unique = document.getElementById('unique');
+unique.addEventListener('click', handlerClick);
 
-const slider = new Slider(imageDB);
-
-const image = document.querySelector('.slider-container>.slide>img');
-
-const [prevBtn, nextBtn] = document.querySelectorAll(
-  '.slider-container>button'
-);
-
-function updateSlide() {
-  image.src = slider.currentSlide.src;
-  image.alt = slider.currentSlide.alt;
+function handlerClick() {
+  //alert(1)
+  console.log('handlerClick');
+  unique.removeEventListener('click', handlerClick);
+  unique.disabled = true;
 }
-updateSlide();
 
-const handlerSlide =
-  (direction = 'next') =>
-  () => {
-    slider.currentIndex = slider[direction];
-    updateSlide();
-  };
+//генеруємо об'єкт подіїї objMouseClickEvent
+const objMouseClickEvent = new MouseEvent('click');
+//викликаємо згенерований об'єкт події на елементі
+unique.dispatchEvent(objMouseClickEvent);
 
-prevBtn.addEventListener('click', handlerSlide('prev'));
-nextBtn.addEventListener('click', handlerSlide('next'));
-
-// prevBtn.addEventListener('click', ()=>{
-//   slider.currentIndex = slider.prev;
-//   updateSlide();
-// })
-
-// nextBtn.addEventListener('click', ()=>{
-//   slider.currentIndex = slider.next;
-//   updateSlide();
-// })
