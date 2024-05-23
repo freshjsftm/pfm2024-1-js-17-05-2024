@@ -1,5 +1,15 @@
-#wrapper-btn{
+#wrapper-btn {
   padding: 2%;
   border: 2px solid #bbb;
   text-align: center;
+}
+.heading{
+  text-transform: uppercase;
+}
+.active {
+  background: #333;
+  color: #fff;
+}
+.old {
+  text-decoration: line-through;
 }
