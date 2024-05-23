@@ -3,6 +3,14 @@
   border: 2px solid #bbb;
   text-align: center;
 }
+a{
+  color:inherit;
+}
+.item{
+  padding: 10px;
+  background-color: #ddd;
+  margin: 5px;
+}
 .heading{
   text-transform: uppercase;
 }

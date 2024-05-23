@@ -1,18 +1,18 @@
 'use strict';
 
-const wrapperBtn = document.getElementById('wrapper-btn');
-const { children } = wrapperBtn;
+const { children: items } = document.getElementById('main-menu');
 
-//console.log(children);
-
-for (const child of children) {
-  child.addEventListener('click', ({ target }) => {
-    //надає можливість працювати з класами
-    console.dir(child.classList);
-    //child.className += ' active'
-    child.classList.add('old');
-    child.classList.toggle('active');
-    child.classList.remove('heading');
-    console.dir(child.classList);
+for (const item of items) {
+  item.classList.add('item');
+  item.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    // console.log(e.currentTarget); //li
+    // console.log(e.target); //
+    //якщо потрібно лишити клас active тільки елементу по якому клікнули, то треба пройтися по елементах і видалити їм клас active
+    for (const item of items) {
+      item.classList.remove('active');
+    }
+    e.currentTarget.classList.add('active');
   });
 }
