@@ -1,4 +1,18 @@
 'use script';
+
+const stringToColour = (str) => {
+  let hash = 0;
+  str.split('').forEach((char) => {
+    hash = char.charCodeAt(0) + ((hash << 5) - hash);
+  });
+  let colour = '#';
+  for (let i = 0; i < 3; i++) {
+    const value = (hash >> (i * 8)) & 0xff;
+    colour += value.toString(16).padStart(2, '0');
+  }
+  return colour;
+};
+
 console.table(actors);
 const root = document.getElementById('root');
 
@@ -30,10 +44,24 @@ const items = actors.map((actor) => {
   const div = document.createElement('div');
   div.classList.add('actor-pic-wrapper');
 
+  const span = document.createElement('span');
+  span.classList.add('actor-initial');
+  // отримати ініціали з name
+  span.append(name.at(0));
+  //stringToColour
+  span.style.setProperty('background-color', stringToColour(name));
+  div.append(span);
+
   const img = document.createElement('img');
   img.classList.add('actor-pic');
   img.setAttribute('src', photo);
   img.setAttribute('alt', name);
+  img.addEventListener('error', ({ target }) => {
+    target.remove();
+  });
+  img.addEventListener('load', ({ target }) => {
+    div.append(target);
+  });
 
   const h2 = document.createElement('h2');
   h2.classList.add('actor-name');
@@ -45,7 +73,6 @@ const items = actors.map((actor) => {
   // p.innerText = birthdate;
   p.append(birthdate);
 
-  div.append(img);
   article.append(div, h2, p);
   item.append(article);
   return item;

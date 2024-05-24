@@ -35,12 +35,27 @@ img{
   text-align: center;
 }
 .actor-pic-wrapper {
-  padding: 15px;
-}
-.actor-pic {
   width: var(--size-pic);
   height: var(--size-pic);
+  margin: 15px;
+  position: relative;
+}
+.actor-initial,
+.actor-pic{
+  width: inherit;
+  height: inherit;
   border-radius: 50%;
+  position: absolute;
+  left: 0;
+}
+.actor-initial{
+  display: inline-flex;
+  background-color: pink;
+  justify-content: center;
+  align-items: center;
+  font-size: 72px;
+}
+.actor-pic {
   object-fit: cover;
 }
 .actor-name {
