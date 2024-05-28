@@ -13,15 +13,15 @@ const tasks = [
 const pattern = /^[А-ЯІЇҐЄ][а-яіїґє']{3,15} ([А-ЯІЇҐЄ]\.){2}$/;
 
 const { form } = document.forms;
-const { body:bodyInput } = form.elements;
+const { body: bodyInput } = form.elements;
 
-bodyInput.addEventListener('input', ({target})=>{
-  if(pattern.test(target.value)){
-    target.style.setProperty('background-color', '')
-  }else{
-    target.style.setProperty('background-color', 'pink')
+bodyInput.addEventListener('input', ({ target }) => {
+  if (pattern.test(target.value)) {
+    target.style.setProperty('background-color', '');
+  } else {
+    target.style.setProperty('background-color', 'pink');
   }
-})
+});
 
 const ulListTasks = document.createElement('ul');
 
@@ -36,19 +36,21 @@ form.addEventListener('submit', (event) => {
     }
   }
 
-  const task = {
-    id: tasks.length + 1,
-    body: body.value,
-    prioritet: prioritet.checked,
-    options: [optionsArray],
-    worker: worker.value,
-  };
+  if (pattern.test(body.value)) {
+    const task = {
+      id: tasks.length + 1,
+      body: body.value,
+      prioritet: prioritet.checked,
+      options: [optionsArray],
+      worker: worker.value,
+    };
 
-  const liTask = document.createElement('li');
-  liTask.innerHTML = `<strong style="color:${
-    task.prioritet ? 'red' : 'blue'
-  }">${task.body}</strong> <em>(${task.worker})</em>`;
-  ulListTasks.append(liTask);
+    const liTask = document.createElement('li');
+    liTask.innerHTML = `<strong style="color:${
+      task.prioritet ? 'red' : 'blue'
+    }">${task.body}</strong> <em>(${task.worker})</em>`;
+    ulListTasks.append(liTask);
+  }
 });
 
 const lisTask = tasks.map((task) => {
