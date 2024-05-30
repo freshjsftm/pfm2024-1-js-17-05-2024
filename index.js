@@ -2,12 +2,12 @@
 
 console.log(1);
 
-const identificator = setTimeout(() => {
+const identificator = setInterval(() => {
   console.log('subscribe');
 }, 3000);
 
 document.getElementById('btn').addEventListener('click', () => {
-  clearTimeout(identificator);
+  clearInterval(identificator);
   console.log('clear');
 });
 
