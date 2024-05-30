@@ -1,31 +1,39 @@
 'use strict';
 
-console.log(1);
+console.log(`
+написати функцію, яка буде послідовно в часі виводити числа від 1 до 10 з проміжком півсекунди
+`);
+console.log('start');
 
-setTimeout(() => {
-  console.log('3');
-  console.time('time')
-  let summa = 0;
-  for(let i=0; i<100000;i++){
-    for(let j=0; j<100000;j++){
-      summa += i;
-    }
-  }
-  console.log(summa);
-  console.timeEnd('time')
-}, 100);
+// function numbers() {
+//   let number = 1;
 
-setTimeout(() => {
-  console.log('4');
-}, 100);
+//   let id = setInterval(() => {
+//     console.log(number);
+//     number++;
 
-setTimeout(() => {
-  console.log('5');
-   let summa = 0;
-  for(let i=0; i<1000;i++){
-    summa += i;
-  }
-  console.log(summa);
-}, 100);
+//     if (number > 10) {
+//       clearInterval(id);
+//     }
+//   }, 500);
+// }
 
-console.log(2);
+// numbers();
+
+function numbers(number = 1, max = 10, time = 500) {
+  return function () {
+    let id = setInterval(() => {
+      console.log(number);
+      number++;
+      for (let i = 0; i < 100000; i++) {}
+      for (let j = 0; j < 100000; j++) {}
+      if (number > max) {
+        clearInterval(id);
+      }
+    }, time);
+  };
+}
+console.time('counter');
+const counter = numbers(10, 15, 300);
+counter();
+console.timeEnd('counter');
