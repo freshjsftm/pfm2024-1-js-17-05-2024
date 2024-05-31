@@ -1,26 +1,22 @@
 'use strict';
 
-const propmise = fetch('./assets/js/users.json');
-console.log(propmise);
+fetch('./assets/js/users.json')
+  .then((response) => response.json())
+  .then((data) => {
+    console.table(data); // users
+    //render users - тільки тут доступ до данних!!!
+    data.forEach((user) => {
+      console.log(user.fname);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+  .finally(() => {
+    console.log('finally');
+  });
 
-propmise.then(
-  (response) => {
-    console.log('ok', response);
-    const dataPromise = response.json();
-    dataPromise.then(
-      (data) => {
-        console.table(data);
-        //render users
-      },
-      (error) => {
-        console.log('error', error);
-      }
-    );
-  },
-  (error) => {
-    console.log('error', error);
-  }
-);
+//тут users НЕ МАЄ!!!
 
 // 3 стани проміса
 // pending - очикування відповіді від сервера
