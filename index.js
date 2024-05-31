@@ -1,26 +1,29 @@
 'use strict';
 
-function f() {
-  console.log(1);
-  setTimeout(() => {
-    f();
-  }, 0);
-}
-// f();
+const propmise = fetch('./assets/js/users.json');
+console.log(propmise);
 
+propmise.then(
+  (response) => {
+    console.log('ok', response);
+    const dataPromise = response.json();
+    dataPromise.then(
+      (data) => {
+        console.table(data);
+        //render users
+      },
+      (error) => {
+        console.log('error', error);
+      }
+    );
+  },
+  (error) => {
+    console.log('error', error);
+  }
+);
 
-// request - 30ms
-
-function test(){
-  setTimeout(() => {
-    setTimeout(() => {
-      setTimeout(() => {
-        setTimeout(() => {
-          setTimeout(() => {
-            console.log(1);
-          }, 700);
-        }, 200);
-      }, 100);
-    }, 500);
-  }, 1000);
-}
+// 3 стани проміса
+// pending - очикування відповіді від сервера
+// fullfilled - все добре повернулися данні
+// reject - сталася помилка
+// propmise.then().catch().finally()
