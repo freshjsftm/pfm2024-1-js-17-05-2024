@@ -1,27 +1,36 @@
 'use strict';
 
-const format = (value) => (value < 10 ? '0' + value : value);
-const root = document.getElementById('root');
+const user = {
+  fname:'Brad',
+  lname:'Pitt',
+  age:61,
+  getFullName(){
+    return this.fname + ' ' + this.lname;
+  },
+  isMale: true,
+  hasPet: undefined,
+  ukrainianPasport: null,
+  [Symbol('symbol')]:'symbol',
+  children:['alex','anna','max'],
+  address:{
+    town:'NY',
+    house:123,
+    flour: undefined,
+  },
+};
 
-console.log(`написати функцію, яка буде виводити годинник`);
-const paragraf = document.createElement('p');
-setInterval(() => {
-  const date = new Date();
-  paragraf.innerText = `${format(date.getHours())}:${format(
-    date.getMinutes()
-  )}:${format(date.getSeconds())}`;
-}, 100);
-root.append(paragraf);
+console.log(user);
+const serialiseUser = JSON.stringify(user);
+console.log(typeof serialiseUser);
+console.log(serialiseUser);
 
-console.log(
-  `написати функцію, яка буде через 3 секунди виводити повідомлення на всю сторінку перекриваючи все, що міститься в body`
-);
-setTimeout(() => {
-  const fullscreen = document.createElement('div');
-  fullscreen.classList.add('fullscreen');
-  fullscreen.innerText = 'Ви ще тут ?'; 
-  root.append(fullscreen);
-  setTimeout(() => {
-    fullscreen.remove();
-  }, 5000);
-}, 3000);
+
+const deSerialiseUser = JSON.parse(serialiseUser);
+console.log(deSerialiseUser);
+
+
+// Серіалізація — процес перетворення будь-якої структури даних у послідовність бітів. Зворотною до операції серіалізації є операція десеріалізації — відновлення початкового стану структури даних із бітової послідовності. Серіалізація використовується для передавання об'єктів мережею й для збереження їх у файлах.
+
+//JSON (англ. JavaScript Object Notation, укр. запис об'єктів JavaScript, вимовляється джéйсон[1]) — це текстовий формат обміну даними між комп'ютерами.
+
+

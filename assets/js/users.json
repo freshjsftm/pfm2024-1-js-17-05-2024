@@ -1,0 +1,32 @@
+[
+  {
+    "id":1,
+    "fname": "Brad",
+    "lname": "Pitt",
+    "age": 61,
+    "isMale": true,
+    "ukrainianPasport": null,
+    "children": ["alex", "anna", "max"],
+    "address": { "town": "NY", "house": 123 }
+  },
+  {
+    "id":41,
+    "fname": "Tom",
+    "lname": "Rot",
+    "age": 60,
+    "isMale": true,
+    "ukrainianPasport": null,
+    "children": [],
+    "address": { "town": "NY", "house": 45 }
+  },
+  {
+    "id":31,
+    "fname": "Anna",
+    "lname": "Qwerty",
+    "age": 40,
+    "isMale": false,
+    "ukrainianPasport": { "id": "FE1545" },
+    "children": [],
+    "address": { "town": "NY", "house": 45 }
+  }
+]
