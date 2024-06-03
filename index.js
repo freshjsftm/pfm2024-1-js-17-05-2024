@@ -1,23 +1,25 @@
 'use strict';
 
-// наші данні
-const number = 77;
+console.log('start');
+setTimeout(
+  () => {
+  console.log('setTimeout');
+}, 0);
+const promise = new Promise((resolve, reject) => {
+  console.log('start promise');
+  resolve(); // проміс в стані фулфілд
+  reject(); // не можливо!!! перевести в стан реджект
+  console.log('end promise');
+});
+promise // створюємо проміс синхронно!!!
+  .then(() => {
+    console.log('resolve');
+  })
+  .catch(() => {
+    console.log('reject');
+  })
+  .finally(() => {
+    console.log('finally');
+  });
+console.log('end');
 
-//огортаємо в проміс данні, щоб передати функції
-const numberPromiseF = Promise.resolve(number);
-const numberPromiseR = Promise.reject('number error');
-
-// складна функція зі сторонньої бібіліотеки
-// яка працює лише з промісами!!!
-const handlerPromise = (promise) => {
-  return promise
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-handlerPromise(numberPromiseF);
-handlerPromise(numberPromiseR);
