@@ -1,25 +1,22 @@
 'use strict';
+// const lis = document.getElementById('list').children;
+// for (const li of lis) {
+//   li.addEventListener('click', ({ target }) => {
+//     target.innerText += '!';
+//   });
+// }
 
-console.log('start');
-setTimeout(
-  () => {
-  console.log('setTimeout');
-}, 0);
-const promise = new Promise((resolve, reject) => {
-  console.log('start promise');
-  resolve(); // проміс в стані фулфілд
-  reject(); // не можливо!!! перевести в стан реджект
-  console.log('end promise');
+// приклад зменшення складності алгоритма з лінійної до константної
+// делегування події
+const list = document.getElementById('list');
+list.addEventListener('click', ({ target, currentTarget }) => {
+  console.log(target); //елемент по якому клікнули!!!
+  console.log(currentTarget); //елемент чий обробник відпрацював!!! list
+  console.log(target.parentNode); //батьківський елемент
+  // if (target !== currentTarget) {
+  //   target.innerText += '!';
+  // }
+  if (target.parentNode === list) {
+    target.innerText += '!';
+  }
 });
-promise // створюємо проміс синхронно!!!
-  .then(() => {
-    console.log('resolve');
-  })
-  .catch(() => {
-    console.log('reject');
-  })
-  .finally(() => {
-    console.log('finally');
-  });
-console.log('end');
-
